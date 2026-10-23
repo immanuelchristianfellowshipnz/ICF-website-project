@@ -42,7 +42,7 @@
       var weekday = d.getUTCDay(), nth = Math.ceil(d.getUTCDate() / 7);
       if (weekday === 0) add(d,'10:30','13:30','Sunday service','10:30am to 1:30pm · Service and fellowship');
       if (weekday === 0 && nth === 3) add(d,'13:30','23:59',"Women's ministry, gospel outreach and youth ministry",'After the service and fellowship','ministries.html');
-      if (weekday === 5 && nth !== 1) add(d,'19:30','21:30','Bible study and prayer meeting','7:30pm to 9:30pm');
+      if (weekday === 5 && nth !== 1) add(d,'19:00','21:30','Bible study and prayer meeting','7:00pm to 9:30pm');
       if (weekday === 6 && nth === 1) add(d,'10:30','13:00','Fasting prayer','10:30am to 1:00pm');
     }
     return found.concat(liveSpecials(now,specialEvents)).sort(function (a,b) {

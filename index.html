@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Immanuel Christian Fellowship</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Archivo:wght@500;700;800&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* Layout: airy white page, centred headlines in a tall condensed face, black pill buttons, staggered photo tiles under the hero. Light-only by choice. */
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --soft: #f4f6f6;
+  --ink: #141414;
+  --muted: #5d6266;
+  --line: #e4e7e8;
+  --teal: #1597a8;
+  --teal-soft: #d8eff2;
+  --ph-bg: #fff1b8;
+  --ph-ink: #6a4b00;
+  --display: "Oswald", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --label: "Archivo", "Segoe UI", system-ui, sans-serif;
+  --body: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.65; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.05; letter-spacing: -0.005em; text-wrap: balance; margin: 0; }
+h2 { font-size: clamp(2.3rem, 5vw, 3.6rem); }
+h3 { font-family: var(--label); font-weight: 700; font-size: 1.1rem; letter-spacing: 0; line-height: 1.3; }
+p { margin: 0; max-width: 62ch; }
+.label { font-family: var(--label); font-weight: 800; font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); }
+.muted { color: var(--muted); }
+.center { text-align: center; justify-items: center; }
+.center p { margin-inline: auto; }
+
+.ph { background: var(--ph-bg); color: var(--ph-ink); padding: 0.05em 0.35em; border-radius: 4px; font-style: normal; }
+.draft { background: var(--ph-bg); color: var(--ph-ink); font-size: 0.88rem; }
+.draft .wrap { padding-block: 8px; }
+
+/* Header */
+header.site { background: var(--bg); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+.bar { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px; padding-block: 22px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand svg { width: 46px; height: 46px; flex-shrink: 0; }
+.wordmark { font-family: var(--label); font-weight: 800; font-size: 0.86rem; line-height: 1.1; letter-spacing: 0.02em; text-transform: uppercase; }
+nav.main ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; gap: 36px; font-size: 1rem; }
+nav.main a { text-decoration: none; }
+nav.main a:hover, nav.main a[aria-current="page"] { color: var(--teal); }
+.menu-btn { display: none; width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer; border-radius: 8px; }
+.menu-btn span { display: block; height: 2px; background: var(--ink); margin: 6px auto; border-radius: 2px; }
+.menu-btn span:first-child { width: 24px; }
+.menu-btn span:last-child { width: 16px; margin-left: 10px; }
+.mobile-nav ul { list-style: none; margin: 0; padding: 0 0 16px; display: grid; gap: 4px; }
+.mobile-nav a { display: block; padding: 10px 0; text-decoration: none; font-size: 1.1rem; border-bottom: 1px solid var(--line); }
+@media (max-width: 860px) {
+  nav.main { display: none; }
+  .bar { grid-template-columns: 1fr auto; }
+  .menu-btn { display: block; }
+}
+
+/* Hero */
+.hero .wrap { padding-block: clamp(48px, 9vw, 110px) clamp(40px, 6vw, 72px); display: grid; gap: 26px; }
+.hero h1 { font-size: clamp(2.8rem, 7.4vw, 5.6rem); max-width: 17ch; }
+.hero .lede { font-size: 1.25rem; color: var(--muted); }
+.pill { display: inline-block; padding: 15px 34px; border-radius: 999px; background: var(--ink); color: #ffffff; font-family: var(--label); font-weight: 700; font-size: 0.92rem; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; }
+.pill:hover { background: #333; }
+.pill.light { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink); }
+
+/* Staggered photo strip */
+.strip { overflow: hidden; }
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 2.2vw, 28px); align-items: start; margin-inline: -3%; }
+.tile { margin: 0; aspect-ratio: 4 / 3; max-width: 100%; border-radius: 14px; overflow: hidden; background: var(--soft); }
+.tile img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.tile:nth-child(2) { margin-top: 14%; }
+.tile:nth-child(3) { margin-top: 6%; }
+.tile:nth-child(4) { margin-top: 18%; }
+@media (max-width: 700px) {
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-inline: 0; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+  .tile:nth-child(2) { margin-top: 12%; }
+  .tile:nth-child(3) { margin-top: 0; }
+  .tile:nth-child(4) { margin-top: 12%; }
+}
+
+/* Sections */
+section.block .wrap { padding-block: clamp(64px, 9vw, 112px); display: grid; gap: 36px; }
+section.soft { background: var(--soft); }
+.head { display: grid; gap: 16px; }
+
+.times { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.times > div { padding: 26px 8px; display: grid; gap: 4px; text-align: center; }
+.times > div + div { border-left: 1px solid var(--line); }
+@media (max-width: 700px) { .times > div + div { border-left: 0; border-top: 1px solid var(--line); } }
+.times .value { font-family: var(--display); font-weight: 500; font-size: 1.8rem; line-height: 1.2; }
+.times .label { font-size: 0.72rem; }
+
+/* Confession */
+ol.confession { list-style: none; margin: 0; padding: 0; counter-reset: art; border-top: 1px solid var(--line); }
+ol.confession li { counter-increment: art; display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 4px 20px; padding-block: 26px; border-bottom: 1px solid var(--line); }
+ol.confession li::before { content: counter(art, decimal-leading-zero); grid-row: span 2; font-family: var(--display); font-size: 2rem; line-height: 1; color: var(--teal); font-variant-numeric: tabular-nums; }
+ol.confession p { color: var(--muted); }
+
+/* Overseers */
+.people { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.people li { background: var(--bg); border-radius: 14px; padding: 28px 24px; display: grid; gap: 2px; text-align: center; }
+.people .name { font-family: var(--display); font-weight: 500; font-size: 1.6rem; line-height: 1.2; }
+.people .role { font-family: var(--label); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); }
+
+/* Ministries */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.card { display: grid; gap: 12px; align-content: start; }
+.card .img { aspect-ratio: 4 / 3; max-width: 100%; border-radius: 14px; background: var(--soft); display: grid; place-items: end start; padding: 12px; font-size: 0.82rem; color: var(--muted); }
+.card p { color: var(--muted); font-size: 0.97rem; }
+.callout { background: var(--teal-soft); border-radius: 18px; padding: clamp(24px, 4vw, 40px); display: grid; gap: 12px; }
+
+.split { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px 64px; align-items: start; }
+.split > * { min-width: 0; }
+dl.info { margin: 0; display: grid; }
+dl.info div { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 12px; padding-block: 16px; border-bottom: 1px solid var(--line); }
+dl.info dt { font-weight: 600; }
+dl.info dd { margin: 0; color: var(--muted); overflow-wrap: anywhere; }
+
+footer { border-top: 1px solid var(--line); font-size: 0.9rem; color: var(--muted); }
+footer .wrap { padding-block: 36px 110px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+/* Floating visit prompt */
+.float { position: fixed; right: calc(20px + env(safe-area-inset-right, 0px)); bottom: calc(20px + env(safe-area-inset-bottom, 0px)); z-index: 15; display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.float .bubble { background: var(--bg); border-radius: 999px; padding: 10px 22px; box-shadow: 0 6px 24px rgba(20, 20, 20, 0.14); display: grid; line-height: 1.25; }
+.float .bubble strong { font-weight: 600; }
+.float .bubble span { font-size: 0.85rem; color: var(--muted); }
+.float .dot { width: 58px; height: 58px; border-radius: 50%; background: var(--teal); display: grid; place-items: center; box-shadow: 0 6px 24px rgba(21, 151, 168, 0.35); }
+.float .dot svg { width: 26px; height: 26px; }
+@media (max-width: 520px) { .float .bubble { display: none; } }
+
+/* Content additions */
+.times .sub { font-size: 0.92rem; color: var(--muted); }
+.center-text { text-align: center; margin-inline: auto; }
+.note { font-size: 0.92rem; }
+.stack { display: grid; gap: 16px; min-width: 0; }
+ol.confession .refs { grid-column: 2; font-family: var(--label); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.04em; color: var(--teal); margin-top: 6px; }
+ol.confession li::before { grid-row: span 3; }
+.cards .card { border: 1px solid var(--line); border-radius: 14px; padding: 24px; gap: 8px; }
+.card .when { font-family: var(--label); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); }
+img.building { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 547 / 156; object-fit: cover; border-radius: 14px; }
+.cards { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.people { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+/* Ministries dropdown */
+.dd { position: relative; }
+.dd-btn { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.dd-btn:hover, .dd-btn[aria-expanded="true"] { color: var(--teal); }
+.dd-btn svg { width: 12px; height: 12px; transition: transform 0.15s; }
+.dd-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+nav.main .dd-menu { position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%); display: grid; gap: 2px; width: max-content; max-width: 320px; padding: 8px; background: var(--bg); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 12px 32px rgba(20, 20, 20, 0.12); }
+nav.main .dd-menu[hidden] { display: none; }
+nav.main .dd-menu a { display: block; padding: 10px 14px; border-radius: 10px; }
+nav.main .dd-menu a:hover { background: var(--soft); color: var(--ink); }
+.mobile-group { display: block; padding: 14px 0 4px; font-family: var(--label); font-weight: 800; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); }
+.mobile-nav a.sub { padding-left: 14px; }
+@media (prefers-reduced-motion: reduce) { .dd-btn svg { transition: none; } }
+
+/* Global ministries */
+.global { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.partner { background: var(--bg); border-radius: 18px; padding: clamp(24px, 4vw, 40px); display: grid; gap: 12px; align-content: start; justify-items: start; min-width: 0; }
+.partner h3 { font-family: var(--display); font-weight: 600; font-size: 1.9rem; line-height: 1.1; }
+.pill.disabled { cursor: default; box-shadow: inset 0 0 0 2px var(--line); }
+
+/* Verses */
+section.verses .wrap { padding-block: clamp(56px, 8vw, 96px) 0; }
+.verse-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0; }
+.verse { margin: 0; padding: 8px clamp(16px, 3vw, 36px) 24px; display: grid; gap: 14px; align-content: start; text-align: center; min-width: 0; }
+.verse + .verse { border-left: 1px solid var(--line); }
+@media (max-width: 960px) { .verse + .verse { border-left: 0; border-top: 1px solid var(--line); padding-top: 28px; } }
+.verse blockquote { margin: 0; font-family: var(--display); font-weight: 500; font-size: clamp(1.6rem, 2.6vw, 2.1rem); line-height: 1.2; text-wrap: balance; }
+.verse blockquote strong { font-weight: 600; color: var(--teal); }
+.verse figcaption { font-family: var(--label); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+
+/* Events */
+section.events .wrap { padding-top: 0; }
+.event-list { list-style: none; margin: 0; padding: 0; display: grid; border-top: 1px solid var(--line); }
+.event { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 20px; align-items: center; padding-block: 18px; border-bottom: 1px solid var(--line); }
+.event .date { width: 84px; height: 84px; border-radius: 14px; background: var(--teal-soft); display: grid; place-content: center; text-align: center; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.event .date .d { font-family: var(--label); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); }
+.event .date .n { font-family: var(--display); font-weight: 600; font-size: 2rem; }
+.event .date .m { font-family: var(--label); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.event .ev { display: grid; gap: 2px; min-width: 0; }
+.event .ev h3 { font-size: 1.15rem; }
+.event .ev p { color: var(--muted); font-size: 0.97rem; }
+@media (max-width: 520px) { .event { grid-template-columns: 64px minmax(0, 1fr); gap: 14px; } .event .date { width: 64px; height: 64px; } .event .date .n { font-size: 1.5rem; } }
+
+/* Beliefs layout + hope card */
+.beliefs-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); gap: 40px; align-items: start; }
+@media (max-width: 900px) { .beliefs-grid { grid-template-columns: minmax(0, 1fr); } }
+.hope { background: var(--teal-soft); border: 1px solid #9fd6de; border-radius: 18px; padding: clamp(24px, 3vw, 40px); display: grid; gap: 16px; align-content: start; position: sticky; top: calc(110px + env(safe-area-inset-top, 0px)); }
+@media (max-width: 900px) { .hope { position: static; } }
+.hope svg { width: 36px; height: 48px; color: var(--teal); }
+.hope h3 { font-family: var(--display); font-weight: 600; font-size: 1.9rem; line-height: 1.1; }
+.hope p { color: var(--muted); }
+.hope p.soon { font-family: var(--label); font-weight: 700; font-size: 1.15rem; color: var(--teal); }
+
+/* Worship videos */
+.video { position: relative; width: 100%; max-width: 900px; margin-inline: auto; aspect-ratio: 16 / 9; border-radius: 18px; overflow: hidden; background: var(--soft); }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-fallback { display: grid; place-content: center; gap: 10px; text-align: center; padding: 24px; height: 100%; color: var(--muted); }
+.center-btn { display: flex; justify-content: center; }
+
+.special-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.special-list li { display: grid; gap: 2px; }
+</style>
+</head>
+<body>
+
+
+<div class="draft"><div class="wrap"><strong>Draft for review.</strong> Highlighted text like <em class="ph">this</em> and the logo are placeholders.</div></div>
+
+<header class="site">
+  <div class="wrap">
+    <div class="bar">
+      <a class="brand" href="#top" id="top" aria-label="Immanuel Christian Fellowship home">
+        <!-- EDIT: placeholder logo, replace with the church's real logo -->
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="24" r="21" fill="none" stroke="#141414" stroke-width="3"/>
+          <rect x="21.5" y="11" width="5" height="26" rx="1" fill="#141414"/>
+          <rect x="14" y="18" width="20" height="5" rx="1" fill="#141414"/>
+        </svg>
+        <span class="wordmark">Immanuel<br>Christian<br>Fellowship</span>
+      </a>
+      <nav class="main" aria-label="Main">
+        <ul>
+          <li><a href="#top" aria-current="page">Home</a></li>
+          <li><a href="#visit">New here?</a></li>
+          <li><a href="#beliefs">What we believe</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#overseers">Overseers</a></li>
+          <li class="dd">
+            <button class="dd-btn" id="dd-btn" aria-expanded="false" aria-controls="dd-menu">Ministries <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <ul class="dd-menu" id="dd-menu" hidden>
+              <li><a href="#ministries">Immanuel Christian Fellowship ministries</a></li>
+              <li><a href="#global">Our global ministries</a></li>
+            </ul>
+          </li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Main" hidden>
+      <ul>
+        <li><a href="#visit">New here?</a></li>
+        <li><a href="#beliefs">What we believe</a></li>
+        <li><a href="#events">Events</a></li>
+          <li><a href="#overseers">Overseers</a></li>
+        <li><span class="mobile-group">Ministries</span></li>
+        <li><a class="sub" href="#ministries">Immanuel Christian Fellowship ministries</a></li>
+        <li><a class="sub" href="#global">Our global ministries</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap center">
+      <span class="label">Mangere, Auckland</span>
+      <h1>Welcome to Immanuel Christian Fellowship</h1>
+      <p class="lede">Join us on Sundays at 10:30am. Everyone is welcome.</p>
+      <a class="pill" href="#visit">Plan your visit</a>
+    </div>
+  </section>
+
+  <section class="strip" aria-label="Photos">
+    <div class="tiles">
+      <figure class="tile"><img src="assets/group-hall.jpg" alt="Church family group photo in the hall" width="1400" height="600" style="object-position: 50% 40%"></figure>
+      <figure class="tile"><img src="assets/group-waterfall.jpg" alt="Church family gathered beside a waterfall on an outing" width="1400" height="787"></figure>
+      <figure class="tile"><img src="assets/group-celebration.jpg" alt="Church family dressed up for a celebration" width="1400" height="661" style="object-position: 50% 45%"></figure>
+      <figure class="tile"><img src="assets/group-park.jpg" alt="Church family on a picnic in the countryside" width="1400" height="787"></figure>
+    </div>
+  </section>
+
+  <section class="block verses" id="verses" aria-label="Verses for 2026">
+    <div class="wrap">
+      <div class="head center">
+        <span class="label">Our verses for 2026</span>
+      </div>
+      <div class="verse-list">
+        <figure class="verse">
+          <blockquote>&hellip;The <strong>LORD</strong> thy <strong>God</strong> is with thee whithersoever thou goest.</blockquote>
+          <figcaption>Joshua 1:9</figcaption>
+        </figure>
+        <figure class="verse">
+          <blockquote>&hellip;The <strong>LORD</strong>, he it is that doth go before thee.</blockquote>
+          <figcaption>Deuteronomy 31:8</figcaption>
+        </figure>
+        <figure class="verse">
+          <blockquote>&hellip;The <strong>Lamb</strong> &hellip; shall lead them unto living fountains of waters.</blockquote>
+          <figcaption>Revelation 7:17</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="sundays">
+    <div class="wrap">
+      <div class="head center">
+        <span class="label">Join us</span>
+        <h2>Gathering times</h2>
+      </div>
+      <div class="times">
+        <div><span class="label">Sundays</span><span class="value">10:30am to 1:30pm</span><span class="sub">Church service and fellowship</span></div>
+        <div><span class="label">Fridays</span><span class="value">7:30pm to 9:30pm</span><span class="sub">Bible study and prayer meeting</span></div>
+        <div><span class="label">First Saturday</span><span class="value">10:30am to 1:00pm</span><span class="sub">Fasting prayer, each month</span></div>
+      </div>
+      <p class="muted note center-text">There is no Friday meeting on the first Friday of the month, because of the first Saturday fasting prayer.</p>
+    </div>
+  </section>
+
+  <section class="block events" id="events">
+    <div class="wrap">
+      <div class="head center">
+        <span class="label">What's on</span>
+        <h2>Upcoming events</h2>
+      </div>
+      <!-- The next dates are worked out automatically from the regular schedule (Auckland time). -->
+      <ol class="event-list" id="event-list">
+        <li class="event"><div class="date"><span class="d">Sun</span></div><div class="ev"><h3>Sunday service</h3><p>Every Sunday, 10:30am to 1:30pm</p></div></li>
+        <li class="event"><div class="date"><span class="d">Fri</span></div><div class="ev"><h3>Bible study and prayer meeting</h3><p>Fridays, 7:30pm to 9:30pm, except the first Friday of the month</p></div></li>
+        <li class="event"><div class="date"><span class="d">Sat</span></div><div class="ev"><h3>Fasting prayer</h3><p>First Saturday of the month, 10:30am to 1:00pm</p></div></li>
+        <li class="event"><div class="date"><span class="d">Sun</span></div><div class="ev"><h3>Women's ministry, gospel outreach and youth ministry</h3><p>Third Sunday of the month, after the service and fellowship</p></div></li>
+      </ol>
+      <!-- EDIT: special events. Each <li> disappears automatically after its data-end time (Auckland time),
+           written as YYYY-MM-DDTHH:MM in 24-hour time. To add an event, copy an <li> and change it.
+           When every event has passed, the whole card hides itself. -->
+      <div class="callout special" id="special-events">
+        <span class="label">Special events</span>
+        <ul class="special-list">
+          <li data-end="2026-12-25T23:59">
+            <h3>Christmas</h3>
+            <p>25th December Christmas service at 10:30 am</p>
+          </li>
+          <li data-end="2027-01-01T02:00">
+            <h3>New year</h3>
+            <p>All night service from 10:30 pm 31 December to 2:00 am 1 January</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block soft" id="about">
+    <div class="wrap">
+      <div class="split">
+        <div class="head">
+          <span class="label">About us</span>
+          <h2>Who we are</h2>
+        </div>
+        <div class="stack">
+          <p>We are a small gathering of mostly Telugu speaking people, and we welcome anybody and everybody.</p>
+          <p class="muted">We keep our sermons mostly in English, so you can follow along whatever language you speak at home.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="beliefs">
+    <div class="wrap">
+      <div class="head center">
+        <span class="label">Our confession</span>
+        <h2>What we believe</h2>
+        <p class="muted">We believe in a Triune God who exists from eternity past to eternity future in three persons: the Father, the Son and the Holy Spirit.</p>
+      </div>
+      <!-- EDIT: church leaders to review the wording and verses. Add further articles as new <li> items. -->
+      <div class="beliefs-grid">
+        <ol class="confession">
+          <li><h3>One God</h3><p>There is one true and living God, and there is no other.</p><span class="refs">Deuteronomy 6:4 · Isaiah 45:5</span></li>
+          <li><h3>Eternal</h3><p>God has no beginning and no end. He exists from eternity past to eternity future.</p><span class="refs">Psalm 90:2 · Isaiah 57:15 · Revelation 1:8</span></li>
+          <li><h3>Three persons</h3><p>The one God exists in three persons: the Father, the Son and the Holy Spirit.</p><span class="refs">Matthew 3:16 to 17 · Matthew 28:19 · 2 Corinthians 13:14</span></li>
+          <li><h3>Each fully God</h3><p>The Father is God, the Son is God and the Holy Spirit is God. Yet there are not three gods, but one God.</p><span class="refs">John 6:27 · John 1:1, 14 · Acts 5:3 to 4</span></li>
+        </ol>
+        <aside class="hope" aria-labelledby="hope-title">
+          <svg viewBox="0 0 40 52" aria-hidden="true"><path d="M20 2v48M4 16h32" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+          <h3 id="hope-title">Jesus Christ, Our Living Hope</h3>
+          <p>Jesus Christ came into the world to save us. He died for our sins, rose again, and ascended into heaven.</p>
+          <p class="soon">He is coming again soon.</p>
+          <p>We live in the hope of His return.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="block soft" id="overseers">
+    <div class="wrap">
+      <div class="head center">
+        <span class="label">Leadership</span>
+        <h2>Our overseers</h2>
+      </div>
+      <ul class="people">
+        <li><span class="name">Brother George</span><span class="role">Overseer</span></li>
+        <li><span class="name">Sister Rachel</span><span class="role">Overseer</span></li>
+        <li><span class="name">Brother Rao</span><span class="role">Overseer</span></li>
+        <li><span class="name">Sister Indira</span><span class="role">Overseer</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="ministries">
+    <div class="wrap">
+      <div class="head center">
+        <span class="label">Get involved</span>
+        <h2>Immanuel Christian Fellowship ministries</h2>
+      </div>
+      <div class="cards">
+        <div class="card"><span class="when">Fridays, 7:30pm</span><h3>Bible study and prayer</h3><p>Studying the Bible and praying together each Friday, except the first Friday of the month.</p></div>
+        <div class="card"><span class="when">First Saturday, 10:30am</span><h3>Fasting prayer</h3><p>A morning of fasting and prayer on the first Saturday of every month.</p></div>
+        <div class="card"><span class="when">Every Sunday</span><h3>Sunday school</h3><p>Children go to Sunday school after the first sermon.</p></div>
+        <div class="card"><span class="when">Third Sunday</span><h3>Women's ministry</h3><p>Meets after the church service and fellowship.</p></div>
+        <div class="card"><span class="when">Third Sunday</span><h3>Gospel outreach</h3><p>Meets after the church service and fellowship.</p></div>
+        <div class="card"><span class="when">Third Sunday</span><h3>Youth ministry</h3><p>Meets after the church service and fellowship.</p></div>
+      </div>
+      <div class="callout">
+        <span class="label">Also part of our family</span>
+        <h3>Immanuel Preschool</h3>
+        <p>Early childhood centres in Otara, Mangere, Papatoetoe and Favona. <a href="https://immanuelpreschool.ac.nz/" target="_blank" rel="noopener">Visit the preschool website</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block soft" id="global">
+    <div class="wrap">
+      <div class="head center">
+        <span class="label">Beyond Auckland</span>
+        <h2>Our global ministries</h2>
+        <p class="muted">We are linked with ministries in India, and we pray for and follow their work.</p>
+      </div>
+      <div class="global">
+        <article class="partner">
+          <span class="label">Linked ministry</span>
+          <h3>Indian Evangelical Mission (IEM)</h3>
+          <p class="muted">An interdenominational, Indian-led mission launched in 1965, sharing the gospel of Jesus Christ in India and abroad, especially where it has not yet been heard.</p>
+          <a class="pill light" href="https://iemoutreach.org/" target="_blank" rel="noopener">Visit IEM</a>
+        </article>
+        <article class="partner">
+          <span class="label">We follow their events</span>
+          <h3>Hebron Ministries</h3>
+          <p class="muted">A ministry headquartered in Hyderabad, India. We keep up with the events and news from Hebron.</p>
+          <!-- EDIT: official Hebron website link not yet confirmed -->
+          <span class="pill light disabled"><em class="ph">Website link to confirm</em></span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="worship">
+    <div class="wrap">
+      <div class="head center">
+        <span class="label">Worship</span>
+        <h2>Songs and worship</h2>
+        <p class="muted">The latest songs from the Benedict Melodies YouTube channel.</p>
+      </div>
+      <!-- YT --><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=UUX-L1KLU3vOucY0c_sp08Tg" title="Benedict Melodies latest videos" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><!-- /YT -->
+      <div class="center-btn"><a class="pill light" href="https://www.youtube.com/@BenedictMelodies" target="_blank" rel="noopener">Visit the channel</a></div>
+    </div>
+  </section>
+
+  <section class="block soft" id="visit">
+    <div class="wrap">
+      <div class="split">
+        <div class="head">
+          <span class="label">New here?</span>
+          <h2>Plan your visit</h2>
+          <p class="muted">Our Sunday service starts at 10:30am, and sermons are mostly in English. Children go to Sunday school after the first sermon. Stay after the service for fellowship.</p>
+        </div>
+        <div class="stack">
+          <img class="building" src="assets/church-building.jpg" alt="Immanuel Christian Fellowship church building, a white weatherboard hall with a cross on the front" width="547" height="156">
+          <dl class="info">
+            <div><dt>Address</dt><dd>13 Favona Road, Mangere, Auckland</dd></div>
+            <div><dt>Parking</dt><dd>On-site parking, plus street parking nearby</dd></div>
+            <div><dt>Map</dt><dd><a href="https://www.google.com/maps/search/?api=1&amp;query=13+Favona+Road+Mangere+Auckland" target="_blank" rel="noopener">Open in Google Maps</a></dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="split">
+        <div class="head">
+          <span class="label">Contact</span>
+          <h2>Get in touch</h2>
+        </div>
+        <!-- EDIT: email is a placeholder; add social links if the church has them -->
+        <dl class="info">
+          <div><dt>Email</dt><dd><em class="ph">ICF@icf.co.nz</em></dd></div>
+          <div><dt>Social</dt><dd><em class="ph">Facebook / YouTube links, if any</em></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="21" fill="none" stroke="#141414" stroke-width="3"/>
+        <rect x="21.5" y="11" width="5" height="26" rx="1" fill="#141414"/>
+        <rect x="14" y="18" width="20" height="5" rx="1" fill="#141414"/>
+      </svg>
+      <span class="wordmark">Immanuel<br>Christian<br>Fellowship</span>
+    </span>
+    <span>13 Favona Road, Mangere, Auckland</span>
+  </div>
+</footer>
+
+<a class="float" href="#visit" aria-label="Plan your visit">
+  <span class="bubble"><strong>Plan your visit</strong><span>Service times and directions</span></span>
+  <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+</a>
+
+<script>
+(function () {
+  var btn = document.getElementById('menu-btn');
+  var nav = document.getElementById('mobile-nav');
+  btn.addEventListener('click', function () {
+    var open = nav.hidden;
+    nav.hidden = !open;
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  nav.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { nav.hidden = true; btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label', 'Open menu'); }
+  });
+
+  var ddBtn = document.getElementById('dd-btn');
+  var ddMenu = document.getElementById('dd-menu');
+  function setDd(open) { ddMenu.hidden = !open; ddBtn.setAttribute('aria-expanded', String(open)); }
+  ddBtn.addEventListener('click', function (e) { e.stopPropagation(); setDd(ddMenu.hidden); });
+  ddMenu.addEventListener('click', function (e) { if (e.target.tagName === 'A') setDd(false); });
+  document.addEventListener('click', function (e) { if (!ddMenu.hidden && !ddMenu.contains(e.target)) setDd(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !ddMenu.hidden) { setDd(false); ddBtn.focus(); } });
+
+  var list = document.getElementById('event-list');
+  try {
+    var parts = new Intl.DateTimeFormat('en-NZ', { timeZone: 'Pacific/Auckland', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(new Date());
+    var get = function (t) { return Number(parts.find(function (p) { return p.type === t; }).value); };
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    var today = new Date(Date.UTC(get('year'), get('month') - 1, get('day')));
+    var nowTime = pad(get('hour') % 24) + ':' + pad(get('minute'));
+    var nowKey = get('year') + '-' + pad(get('month')) + '-' + pad(get('day')) + 'T' + nowTime;
+
+    // Special events: hide each one once its end time has passed, and the card when none are left.
+    var special = document.getElementById('special-events');
+    var items = special.querySelectorAll('li[data-end]');
+    var left = 0;
+    items.forEach(function (li) { var past = li.getAttribute('data-end') <= nowKey; li.hidden = past; if (!past) left++; });
+    special.hidden = left === 0;
+
+    var DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var found = [];
+    for (var i = 0; i < 45 && found.length < 6; i++) {
+      var d = new Date(today.getTime() + i * 86400000);
+      var wd = d.getUTCDay(), nth = Math.ceil(d.getUTCDate() / 7);
+      var add = function (end, t, p) { if (i > 0 || end > nowTime) found.push({ d: d, t: t, p: p }); };
+      if (wd === 0) add('13:30', 'Sunday service', '10:30am to 1:30pm');
+      if (wd === 0 && nth === 3) add('23:59', "Women's ministry, gospel outreach and youth ministry", 'After the service and fellowship');
+      if (wd === 5 && nth !== 1) add('21:30', 'Bible study and prayer meeting', '7:30pm to 9:30pm');
+      if (wd === 6 && nth === 1) add('13:00', 'Fasting prayer', '10:30am to 1:00pm');
+    }
+    found = found.slice(0, 6);
+    list.innerHTML = found.map(function (e) {
+      return '<li class="event"><div class="date"><span class="d">' + DAYS[e.d.getUTCDay()] + '</span><span class="n">' + e.d.getUTCDate() + '</span><span class="m">' + MONTHS[e.d.getUTCMonth()] + '</span></div><div class="ev"><h3>' + e.t + '</h3><p>' + e.p + '</p></div></li>';
+    }).join('');
+  } catch (err) { /* keep the regular schedule shown in the HTML */ }
+})();
+</script>
+</body>
+</html>

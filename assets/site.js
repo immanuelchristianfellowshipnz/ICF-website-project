@@ -6,12 +6,32 @@
   if (document.body.dataset.page === 'index.html') {
     var legacy = {
       visit:'visit.html', sundays:'visit.html#gathering-times', about:'about.html#about',
-      beliefs:'about.html#beliefs', verses:'about.html#verses', overseers:'about.html#overseers',
+      beliefs:'about.html#beliefs', overseers:'about.html#overseers',
       ministries:'ministries.html', global:'ministries.html#global', worship:'ministries.html#worship',
       events:'events.html'
     };
     var target = legacy[window.location.hash.slice(1)];
     if (target) window.location.replace(target);
+  }
+  // The annual verses now live on the homepage. Keep earlier About-page links working.
+  if (document.body.dataset.page === 'about.html' && window.location.hash === '#verses') {
+    window.location.replace('index.html#verses');
+  }
+  // Font loading can move the photos above a direct verse link. Realign once,
+  // unless the visitor has already started interacting with the page.
+  if (document.body.dataset.page === 'index.html' && window.location.hash === '#verses' && document.fonts) {
+    var verseLinkInterrupted = false;
+    function interruptVerseLink() { verseLinkInterrupted = true; }
+    var verseLinkInputs = ['wheel', 'touchstart', 'pointerdown', 'keydown'];
+    verseLinkInputs.forEach(function (type) {
+      window.addEventListener(type, interruptVerseLink, { once: true, passive: true });
+    });
+    document.fonts.ready.then(function () {
+      if (!verseLinkInterrupted && window.location.hash === '#verses') {
+        document.getElementById('verses').scrollIntoView({ block: 'start', behavior: 'instant' });
+      }
+      verseLinkInputs.forEach(function (type) { window.removeEventListener(type, interruptVerseLink); });
+    });
   }
   var btn = document.getElementById('menu-btn');
   var nav = document.getElementById('mobile-nav');

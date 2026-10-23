@@ -298,3 +298,20 @@ section.verses .wrap { padding-bottom: 48px; }
  .hero h1 { font-size: clamp(2.4rem,10.5vw,3.5rem); }
 }
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior: auto !important; } }
+
+/* Homepage annual verses: a compact three-column band, stacked on phones. */
+#verses { background: var(--soft); margin-top: clamp(24px, 3vw, 40px); }
+#verses .wrap { padding-block: 32px; display: grid; gap: 20px; }
+#verses .head { gap: 0; }
+#verses h2 { font-family: var(--label); font-size: 1.15rem; line-height: 1.4; letter-spacing: 0; }
+#verses .verse-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+#verses .verse { margin: 0; padding: 12px 24px; display: grid; grid-template-rows: 1fr auto; gap: 14px; text-align: center; min-width: 0; }
+#verses .verse + .verse { border-top: 0; border-left: 1px solid #dce2e3; }
+#verses blockquote { margin: 0; font-size: clamp(1.15rem, 1.7vw, 1.45rem); line-height: 1.4; text-wrap: balance; }
+#verses figcaption { font-size: 0.75rem; letter-spacing: 0.08em; color: var(--teal); }
+@media (max-width: 700px) {
+  #verses .wrap { padding-block: 26px; gap: 12px; }
+  #verses .verse-list { grid-template-columns: 1fr; }
+  #verses .verse { padding: 20px 12px; gap: 10px; }
+  #verses .verse + .verse { border-left: 0; border-top: 1px solid #dce2e3; }
+}

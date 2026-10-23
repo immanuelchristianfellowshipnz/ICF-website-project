@@ -2,6 +2,13 @@
 
 This is the revised version of your supplied HTML, prepared for your existing GitHub Pages site. No build step, framework, or hosting migration is needed.
 
+## Latest updates
+
+- The annual Bible verses appear below the homepage photographs, in three aligned columns on wider screens and a single column on phones.
+- Language-specific descriptions have been replaced with a welcome for everyone.
+- Verse links now point to the homepage, including redirects from old About-page verse bookmarks.
+- Existing leadership roles, photographs, beliefs, and gathering schedules are retained.
+
 ## Preview
 
 Extract the ZIP completely, then open `index.html` in a browser. Keep all five HTML files and the `assets` folder together. The photos are included. Google Fonts and the YouTube player need an internet connection; fallback fonts remain available offline.
@@ -20,9 +27,9 @@ All internal URLs are relative, so the `/ICF-website-project/` path continues to
 
 | File | Content |
 | --- | --- |
-| `index.html` | Short homepage: welcome, photographs, Sunday details, church introduction, ministry previews, next three gatherings. |
-| `visit.html` | What to expect, languages, children, address, parking, directions, full regular timetable. |
-| `about.html` | Who we are, beliefs, Jesus Christ card, 2026 verses, overseers. |
+| `index.html` | Short homepage: welcome, photographs, compact 2026 Bible verses, Sunday details, church introduction, ministry previews, next three gatherings. |
+| `visit.html` | What to expect, children, address, parking, directions, full regular timetable. |
+| `about.html` | Who we are, beliefs, Jesus Christ card, overseers. |
 | `ministries.html` | Church ministries, preschool, global connections, worship videos. |
 | `events.html` | Special gatherings and the next eight dates. |
 

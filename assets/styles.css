@@ -43,6 +43,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .bar { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 20px; padding-block: 22px; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .brand svg { width: 46px; height: 46px; flex-shrink: 0; }
+.brand img { width: 46px; height: 46px; flex-shrink: 0; }
 .wordmark { font-family: var(--label); font-weight: 800; font-size: 0.86rem; line-height: 1.1; letter-spacing: 0.02em; text-transform: uppercase; }
 nav.main ul { list-style: none; margin: 0; padding: 0; display: flex; justify-content: center; gap: 36px; font-size: 1rem; }
 nav.main a { text-decoration: none; }

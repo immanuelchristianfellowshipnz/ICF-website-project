@@ -1,5 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="480" height="480">
-  <circle cx="24" cy="24" r="21" fill="none" stroke="#141414" stroke-width="3"/>
-  <rect x="21.5" y="11" width="5" height="26" rx="1" fill="#141414"/>
-  <rect x="14" y="18" width="20" height="5" rx="1" fill="#141414"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Immanuel Christian Fellowship logo">
+  <rect width="120" height="120" rx="28" fill="#141414"/>
+  <!-- I as a cross, taller than the letters -->
+  <rect x="21" y="14" width="10" height="92" rx="2.5" fill="#1597a8"/>
+  <rect x="8" y="30" width="36" height="10" rx="2.5" fill="#1597a8"/>
+  <!-- C, open to the right -->
+  <path d="M 75.2 49.5 A 19 19 0 1 0 75.2 74.5" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round"/>
+  <!-- F -->
+  <rect x="83" y="43" width="9" height="38" rx="2" fill="#ffffff"/>
+  <rect x="83" y="43" width="24" height="9" rx="2" fill="#ffffff"/>
+  <rect x="83" y="58" width="19" height="8" rx="2" fill="#ffffff"/>
 </svg>
